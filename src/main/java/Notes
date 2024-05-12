@@ -70,3 +70,27 @@ Throwing Exceptions
 . May need to configure the mock to throw an
 • Possible use case
 · Testing how the code handles exceptions
+
+----
+
+Reflection test utils
+
+# Special Cases during Testing
+    Need to access non-public fields (Id* GeneratedValue(...)
+                                    private Long productId;
+                                    @Autowired
+                                     private ApplicationService service;
+
+        ->Read the field's value
+        ->Set the field's value
+
+    Invoke non-public methods( private String generateTracking Number() { ... })
+. Testing legacy code ... can't change code due to corporate policy
+
+# Spring: Reflection Test Utils
+-> Spring provides a utility class: ReflectionTestUtils
+Allows you to get/set non-public fields directly
+->Can also invoke non-public methods
+JavaDocs provide additional use cases and examples
+www.luv2code.com/reflection-test-utils-javadoc
+
