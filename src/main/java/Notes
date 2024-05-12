@@ -1,0 +1,72 @@
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+We cannot test directly with main DAO, it is called integration testing. We can use DAO test doubles, it is know as mocking
+
+Benefits of mocking
+
+->Allows us to test a given class in isolation.
+->Test integration betwwen given class and its dependencies
+-> Minimizes configuration/availability of dependencies.
+->For eg DAO,DB,REST API etc..
+    We can mock the DAO togive a response
+    We can mock a REST API to give a response
+
+Mocking frameworks
+
+
+Mocking Frameworks
+• The Java ecosystem includes a number of Mocking frameworks
+• The Mocking frameworks provide following features:
+• Minimize hand-coding of mocks ... leverage annotations
+Set expectations for mock responses
+• Verify the calls to methods including the number of calls
+• Programmatic support for throwing exceptions
+
+
+Name Website
+Mockito site.mockito.org
+EasyMock www.easymock.org
+JMockit jmockit.github.io
+...
+We will use Mockito since
+Spring Boot has built-in support for Mockito
+
+
+
+. Unit tests with Mocks have the following structure
+[Set Up] Set expectations with mock responses
+[Execute] Call the method you want to test
+[Assert] Check the result and Verify that it is the expected result
+[Verify] Optionally... verify calls
+(how many times called etc ...)
+
+
+We will test service with Mock of DAO
+
+
+Development Process
+1. Create Mock for DAO
+2. Inject mock into Service
+3. Set up expectations
+4. Call method under test and assert results
+5. Verify method calls
+
+
+
+Spring Boot @MockBean
+. Instead of using Mockito: @Mock and @InjectMocks
+Use Spring Boot support: @MockBean and @Autowired
+@MockBean
+. includes Mockito @Mock functionality
+also adds mock bean to Spring ApplicationContext
+. if existing bean is there, the mock bean will replace it
+. thus making the mock bean available for injection with @Autowired
+
+IMP->Use Spring Boot @MockBean when you need to inject mocks AND inject regular beans from app context
+
+
+Throwing Exceptions
+. May need to configure the mock to throw an
+• Possible use case
+· Testing how the code handles exceptions
